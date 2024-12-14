@@ -1,0 +1,23 @@
+<div class="modal-body">
+  <p>{{ message }}</p>
+  <label for="options">Select an option:</label>
+  <select id="options" class="form-select" [(ngModel)]="selectedOption" (ngModelChange)="onSelectionChange()">
+    @for (option of options; track option) {
+    <option [value]="option" [selected]="!$index">{{ option }}</option>
+    }
+  </select>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border spinner-border-lg text-dark" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  @for (button of buttons; track button) {
+    <button type="button"
+            class="btn btn-primary"
+            (click)="onButtonClick(button)">
+      {{ button.label }}
+    </button>
+  }
+</div>
